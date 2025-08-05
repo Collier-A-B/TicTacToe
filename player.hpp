@@ -9,17 +9,18 @@
  */
 class Player {
     private:
-        std::string m_name;                                         // Player's name
-        char m_symbol;                                              // Player's symbol (X or O) 
+        std::string m_name;                                                     // Player's name
+        char m_symbol;                                                          // Player's symbol (X or O) 
+        int m_score;                                                            // Player's score
 
-        static const Player* player1;                               // Singleton instance for Player 1
-        static const Player* player2;                               // Singleton instance for Player 2
+        static const Player* player1;                                           // Singleton instance for Player 1
+        static const Player* player2;                                           // Singleton instance for Player 2
 
         Player(const std::string& playerName, char playerSymbol) 
-            : m_name(playerName), m_symbol(playerSymbol) {}         // Private constructor
+            : m_name(playerName), m_symbol(playerSymbol), m_score(0) {}         // Private constructor
     public:
-        Player(const Player&) = delete;                             // Prevent copy-construction
-        Player& operator=(const Player&) = delete;                  // Prevent assignment
+        Player(const Player&) = delete;                                         // Prevent copy-construction
+        Player& operator=(const Player&) = delete;                              // Prevent assignment
 
         /**
          * Get Singleton Instances for Player1
@@ -122,6 +123,24 @@ class Player {
          */
         char getSymbol() const {
             return m_symbol;
+        }
+
+        /**
+         * Get Player's Score
+         * 
+         * @return int - Player's score
+         */
+        int getScore() const {
+            return m_score;
+        }
+
+        /**
+         * Increment Player's Score
+         * 
+         * Increases the player's score by 1.
+         */
+        void incrementScore() {
+            m_score++;
         }
 };
         
