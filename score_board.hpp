@@ -21,4 +21,4 @@ class score_board {
             std::cout << "\t" << p2Name << " Score: " << p2Score << std::endl;
             std::cout << "**********************************************************" << std::endl;
         }
-}
+};
