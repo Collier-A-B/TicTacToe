@@ -3,42 +3,13 @@
 
 class game_manager {
     private:
-        const Player* m_currentPlayer;                              
-
+        bool m_currentPlayer;                   // boolean flag to track the current player: true for Player 1, false for Player 2
+        /**
+         * constructor for game_manager
+         * 
+         * Sets Player 1 as the current player.
+         */
+        game_manager() :  m_currentPlayer(true) {} // Initialize with Player 1 as current player
     public:
-        game_manager() : m_currentPlayer(nullptr) {}               // Constructor initializes current player to nullptr
-
-        /**
-         * Start the Game
-         * 
-         * Initializes the game and sets the starting player.
-         */
-        void startGame() {
-            m_currentPlayer = Player::getPlayer1();                 // Set Player 1 as the starting player
-            // Additional game initialization logic can be added here
-        }
-
-        /**
-         * Switch Turns
-         * 
-         * Switches the turn to the other player.
-         */
-        void switchTurn() {
-            if (m_currentPlayer == Player::getPlayer1()) {
-                m_currentPlayer = Player::getPlayer2();
-            } else {
-                m_currentPlayer = Player::getPlayer1();
-            }
-        }
-
-        /**
-         * Get Current Player
-         * 
-         * @return const Player* - Pointer to the current player
-         */
-        const Player* getCurrentPlayer() const {
-            return m_currentPlayer;
-        }
-
-        // Additional game management methods can be added here
+        
 };

@@ -13,11 +13,20 @@ class Player {
         char m_symbol;                                                          // Player's symbol (X or O) 
         int m_score;                                                            // Player's score
 
-        static const Player* player1;                                           // Singleton instance for Player 1
-        static const Player* player2;                                           // Singleton instance for Player 2
+        static Player* player1;                                           // Singleton instance for Player 1
+        static Player* player2;                                           // Singleton instance for Player 2
 
         Player(const std::string& playerName, char playerSymbol) 
             : m_name(playerName), m_symbol(playerSymbol), m_score(0) {}         // Private constructor
+        
+        /**
+         * Reset Player's Score
+         * 
+         * Resets the player's score to 0.
+         */
+        void resetScore() {
+            m_score = 0;
+        }
     public:
         Player(const Player&) = delete;                                         // Prevent copy-construction
         Player& operator=(const Player&) = delete;                              // Prevent assignment
@@ -100,6 +109,21 @@ class Player {
             return player2;
         }
 
+        static void resetPlayersScores() {
+            if (player1 != nullptr) {
+                player1->resetScore(); // Reset Player 1's score
+            }
+            if (player2 != nullptr) {
+                player2->resetScore(); // Reset Player 2's score
+            }
+        }
+
+        /**
+         * Reset Players
+         * 
+         * Deletes the existing player instances and sets them to nullptr.
+         * This is useful for starting a new game or resetting the game state.
+         */
         static void resetPlayers() {
             delete player1;
             delete player2;
@@ -142,5 +166,7 @@ class Player {
         void incrementScore() {
             m_score++;
         }
+
+        
 };
         
