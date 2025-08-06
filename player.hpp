@@ -28,6 +28,20 @@ class Player {
         void resetScore() {
             m_score = 0;
         }
+        
+        /**
+         * Reset Player's Names to default 'Player 1' or 'Player 2'
+         */
+        void resetName(bool isPlayer1) {
+            m_name = (isPlayer1 ? "Player 1" : "Player 2");
+        }
+
+        /**
+         * Reset Player's Symbol to default 'X' or 'O'
+         */
+        void resetSymbol(bool isPlayer1) {
+            m_symbol = (isPlayer1 ? 'X' : 'O');
+        }
     public:
         Player(const Player&) = delete;                                         // Prevent copy-construction
         Player& operator=(const Player&) = delete;                              // Prevent assignment
@@ -111,29 +125,6 @@ class Player {
         }
 
         /**
-         * Reset Players' Scores to zero
-         */
-        static void resetPlayersScores() {
-            if (player1 != nullptr) {
-                player1->resetScore(); // Reset Player 1's score
-            }
-            if (player2 != nullptr) {
-                player2->resetScore(); // Reset Player 2's score
-            }
-        }
-        /**
-         * Reset Players' Names to default 'Player 1' and 'Player 2'
-         */
-        static void resetPlayersNames() {
-            if (player1 != nullptr) {
-                player1->m_name = "Player 1"; // Reset Player 1's name
-            }
-            if (player2 != nullptr) {
-                player2->m_name = "Player 2"; // Reset Player 2's name
-            }
-        }
-
-        /**
          * Delete Players
          * 
          * Deletes the existing player instances and sets them to nullptr.
@@ -149,13 +140,11 @@ class Player {
         /**
          * Reset Players
          * 
-         * Resets both players' scores and names to their default values.
+         * Resets both players' scores to their default values.
          */
         static void resetPlayers() {
             player1->resetScore();
-            player1->resetPlayersNames();
             player2->resetScore();
-            player2->resetPlayersNames();
         }
 
         /**

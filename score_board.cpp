@@ -2,7 +2,7 @@
 #include "player.hpp"
 #include <iostream>
 
-static void displayScoreBoard() {
+void score_board::displayScoreBoard() {
     int p1Score = Player::getPlayer1()->getScore();
     int p2Score = Player::getPlayer2()->getScore();
 
