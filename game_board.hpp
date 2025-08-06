@@ -1,4 +1,6 @@
+#pragma once
 
+#include <iostream>
 class game_board {
     private:
         char m_board[3][3];                     // 3x3 Tic-Tac-Toe board
@@ -37,6 +39,22 @@ class game_board {
                 for (int j = 0; j < 3; ++j) {
                     m_board[i][j] = ' ';        // Reset all cells to empty
                 }
+            }
+        }
+
+        /**
+         * Display the current state of the game board
+         */
+        void display() const {
+            for (int i = 0; i < 3; ++i) {
+                for (int j = 0; j < 3; ++j) {
+                    std::cout << m_board[i][j];
+                    if (j < 2) 
+                        std::cout << " | "; // Column separator
+                }
+                std::cout << std::endl;
+                if (i < 2) 
+                    std::cout << "---------" << std::endl; // Row separator
             }
         }
 };

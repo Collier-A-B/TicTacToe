@@ -1,3 +1,4 @@
+#pragma once
 
 #include <string>
 
@@ -109,6 +110,9 @@ class Player {
             return player2;
         }
 
+        /**
+         * Reset Players' Scores to zero
+         */
         static void resetPlayersScores() {
             if (player1 != nullptr) {
                 player1->resetScore(); // Reset Player 1's score
@@ -117,18 +121,41 @@ class Player {
                 player2->resetScore(); // Reset Player 2's score
             }
         }
+        /**
+         * Reset Players' Names to default 'Player 1' and 'Player 2'
+         */
+        static void resetPlayersNames() {
+            if (player1 != nullptr) {
+                player1->m_name = "Player 1"; // Reset Player 1's name
+            }
+            if (player2 != nullptr) {
+                player2->m_name = "Player 2"; // Reset Player 2's name
+            }
+        }
 
         /**
-         * Reset Players
+         * Delete Players
          * 
          * Deletes the existing player instances and sets them to nullptr.
          * This is useful for starting a new game or resetting the game state.
          */
-        static void resetPlayers() {
+        static void deletePlayers() {
             delete player1;
-            delete player2;
             player1 = nullptr;
+            delete player2;
             player2 = nullptr;
+        }
+
+        /**
+         * Reset Players
+         * 
+         * Resets both players' scores and names to their default values.
+         */
+        static void resetPlayers() {
+            player1->resetScore();
+            player1->resetPlayersNames();
+            player2->resetScore();
+            player2->resetPlayersNames();
         }
 
         /**
