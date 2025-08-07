@@ -57,20 +57,5 @@ class game_board {
          */
         bool makeMove(int row, int col, char symbol);
 
-        bool gameOver() const {
-            // Check for a win or draw condition
-            for (int i = 0; i < 3; ++i) {
-                // Check rows and columns
-                if ((m_board[i][0] == m_board[i][1] && m_board[i][1] == m_board[i][2] && m_board[i][0] != ' ') ||
-                    (m_board[0][i] == m_board[1][i] && m_board[1][i] == m_board[2][i] && m_board[0][i] != ' ')) {
-                    return true; // Win found
-                }
-            }
-            // Check diagonals
-            if ((m_board[0][0] == m_board[1][1] && m_board[1][1] == m_board[2][2] && m_board[0][0] != ' ') ||
-                (m_board[0][2] == m_board[1][1] && m_board[1][1] == m_board[2][0] && m_board[0][2] != ' ')) {
-                return true; // Win found
-            }
-            return (m_moves >= 9); // Draw if all moves are made without a win
-        }
+        bool gameOver() const;
 };
